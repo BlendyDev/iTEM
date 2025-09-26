@@ -55,10 +55,10 @@ public class VariantColours {
         if (itemId.startsWith("GREAT_SPOOK")) {
             return SpookColours.isSpookColour(hexCode);
         }
-        if (itemId.startsWith("LEATHER") && !itemId.contains(":")) {
-            return true;
-        }
         if (itemId.equals("GHOST_BOOTS")) {
+            return GhostlyColours.isGhostlyColor(hexCode);
+        }
+        if (itemId.startsWith("LEATHER") && !itemId.contains(":")) {
             return true;
         }
         if (itemId.equals("LEGGINGS_OF_THE_COVEN")) {

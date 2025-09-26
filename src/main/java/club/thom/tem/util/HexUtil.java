@@ -65,6 +65,10 @@ public class HexUtil {
             return Modifier.SPOOK_SPOOK;
         }
 
+        if (itemId.equals("GHOST_BOOTS") && GhostlyColours.isGhostlyColor(hexCode) && isTrueHex) {
+            return Modifier.GHOSTLY_GHOSTLY;
+        }
+
         if (VariantColours.isVariantColour(itemId, hexCode)) {
             return Modifier.ORIGINAL;
         }
@@ -85,6 +89,7 @@ public class HexUtil {
         FAIRY_FAIRY,
         CRYSTAL_CRYSTAL,
         SPOOK_SPOOK,
+        GHOSTLY_GHOSTLY
         ;
 
         public String getColourCode() {
@@ -102,6 +107,7 @@ public class HexUtil {
                 case ORIGINAL:
                     return EnumChatFormatting.DARK_GRAY.toString();
                 case UNDYED:
+                case GHOSTLY_GHOSTLY:
                     return EnumChatFormatting.GRAY.toString();
                 case SPOOK:
                 case SPOOK_SPOOK:
