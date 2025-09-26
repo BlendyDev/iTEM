@@ -108,9 +108,9 @@ public class ArmourPieceData extends InventoryItemData {
         return String.format("%06X", colourInt);
     }
 
-    public String getHexCode() {
+    public String getHexCode(boolean includeBleached) {
         NBTTagCompound extraAttributes = getExtraAttributes();
-        if (!extraAttributes.hasKey("color") || extraAttributes.getString("color").equals("160:101:64")) {
+        if (!extraAttributes.hasKey("color") || (!includeBleached && extraAttributes.getString("color").equals("160:101:64"))) {
             return getHexFromDisplayColour();
         }
         String[] colourArrayAsString = extraAttributes.getString("color").split(":");
@@ -119,6 +119,10 @@ public class ArmourPieceData extends InventoryItemData {
             colourArray[i] = Integer.parseInt(colourArrayAsString[i]);
         }
         return convertIntArrayToHex(colourArray).toUpperCase();
+    }
+
+    public String getHexCode() {
+        return getHexCode(false);
     }
 
     public boolean hasTrueColor() {
