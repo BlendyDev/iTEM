@@ -35,13 +35,19 @@ public class HexUtil {
             if (VariantColours.isVariantColour(itemId, hexCode)) {
                 if (isTrueHex) return Modifier.FAIRY_FAIRY;
                 else return Modifier.ORIGINAL;
-            } else return Modifier.OG_FAIRY;
+            } else {
+                if (isTrueHex) return Modifier.OG_FAIRY;
+                else return Modifier.GHOST_FAIRY;
+            }
         }
         if (FairyColours.isFairyColour(hexCode)) {
             if (VariantColours.isVariantColour(itemId, hexCode)) {
                 if (isTrueHex) return Modifier.FAIRY_FAIRY;
                 else return Modifier.ORIGINAL;
-            } else return Modifier.FAIRY;
+            } else {
+                if (isTrueHex) return Modifier.FAIRY;
+                else return Modifier.GHOST_FAIRY;
+            }
         }
         if (hexCode.equals("A06540") || hexCode.equals("UNDYED")) {
             return Modifier.UNDYED;
@@ -58,7 +64,9 @@ public class HexUtil {
         }
 
         if (itemId.startsWith("FAIRY_") && SpookColours.isSpookColour(hexCode)) {
-            return Modifier.SPOOK;
+            if (isTrueHex){
+                return Modifier.SPOOK;
+            } else return Modifier.GHOST_SPOOK;
         }
 
         if (itemId.startsWith("GREAT_SPOOK_") && SpookColours.isSpookColour(hexCode) && isTrueHex) {
@@ -89,7 +97,9 @@ public class HexUtil {
         FAIRY_FAIRY,
         CRYSTAL_CRYSTAL,
         SPOOK_SPOOK,
-        GHOSTLY_GHOSTLY
+        GHOSTLY_GHOSTLY,
+        GHOST_FAIRY,
+        GHOST_SPOOK
         ;
 
         public String getColourCode() {
@@ -99,6 +109,7 @@ public class HexUtil {
                     return EnumChatFormatting.AQUA.toString();
                 case FAIRY:
                 case FAIRY_FAIRY:
+                case GHOST_FAIRY:
                     return EnumChatFormatting.LIGHT_PURPLE.toString();
                 case OG_FAIRY:
                     return EnumChatFormatting.DARK_PURPLE.toString();
@@ -111,6 +122,7 @@ public class HexUtil {
                     return EnumChatFormatting.GRAY.toString();
                 case SPOOK:
                 case SPOOK_SPOOK:
+                case GHOST_SPOOK:
                     return EnumChatFormatting.RED.toString();
                 case GLITCHED:
                     // magic grey pipe in front of glitched armour
