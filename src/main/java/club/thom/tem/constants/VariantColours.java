@@ -59,6 +59,8 @@ public class VariantColours {
             return GhostlyColours.isGhostlyColor(hexCode);
         }
         if (itemId.startsWith("LEATHER") && !itemId.contains(":")) {
+            if (FairyColours.isFairyColour(hexCode)) return false;
+            if (CrystalColours.isUncraftableCrystalColour(hexCode)) return false;
             return true;
         }
         if (itemId.equals("LEGGINGS_OF_THE_COVEN")) {

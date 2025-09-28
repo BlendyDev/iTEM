@@ -11,4 +11,6 @@ public class CrystalColours {
     public static boolean isCrystalColour(String hex) {
         return crystalColoursConstants.contains(hex.toUpperCase());
     }
+    //WIP | from my understanding hypixel's dying system is not fully known/reversed, there's just some known possible and known impossible hexes
+    public static boolean isUncraftableCrystalColour(String hex) {return isCrystalColour(hex);}
 }
