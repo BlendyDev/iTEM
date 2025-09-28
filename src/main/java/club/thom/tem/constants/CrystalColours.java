@@ -8,9 +8,13 @@ public class CrystalColours {
             "B88BC9", "C6A3D4", "D9C1E3", "E5D1ED", "EFE1F5", "FCF3FF"
     );
 
+    public static final ImmutableSet<String> uncraftableCrystalColours = ImmutableSet.of(
+            "1F0030", "46085E", "54146E", "5D1C78", "63237D", "6A2C82","FCF3FF"
+    );
+
     public static boolean isCrystalColour(String hex) {
         return crystalColoursConstants.contains(hex.toUpperCase());
     }
     //WIP | from my understanding hypixel's dying system is not fully known/reversed, there's just some known possible and known impossible hexes
-    public static boolean isUncraftableCrystalColour(String hex) {return isCrystalColour(hex);}
+    public static boolean isUncraftableCrystalColour(String hex) {return uncraftableCrystalColours.contains(hex.toUpperCase());}
 }
